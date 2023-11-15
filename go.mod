@@ -1,6 +1,6 @@
 module github.com/LordBrain/date_changer
 
-go 1.21.4
+go 1.21
 
 require (
 	github.com/gravwell/gravwell/v3 v3.8.25

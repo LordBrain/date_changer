@@ -2,6 +2,8 @@ package utils
 
 import (
 	"errors"
+	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -21,7 +23,11 @@ func ConvertTime(timestamp, originalFormat, newFormat string) (string, error) {
 		return "", err
 	}
 	// Parse the original date
-	timeObj, _ := time.Parse(originalFormatLayout, timestamp)
+	timeObj, err := time.Parse(originalFormatLayout, timestamp)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 	// Convert the date to the new format
 	newTime := timeObj.Format(newFormatLayout)
 	// Return new date
@@ -34,21 +40,27 @@ func GetLayoutFromString(layoutName string) (string, string, error) {
 	// Set it to upper, just in case.
 	switch strings.ToUpper(layoutName) {
 	case "ANSIC":
-		return time.ANSIC, timegrinder.AnsiCRegex, nil
+		ansicFixedRegex := `[A-Za-z]{3}\s+[(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)]+\s+\d{1,2}\s+\d\d:\d\d:\d\d\s+\d{4}`
+		return time.ANSIC, ansicFixedRegex, nil
 	case "UNIXDATE":
-		return time.UnixDate, timegrinder.UnixRegex, nil
+		unixdateFixedRegex := `[A-Za-z]{3}\s+[(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)]+\s+\d{1,2}\s+\d\d:\d\d:\d\d\s+[A-Z]{3}\s+\d{4}`
+		return time.UnixDate, unixdateFixedRegex, nil
 	case "RUBYDATE":
-		return time.RubyDate, timegrinder.RubyRegex, nil
+		rubydateFixedRegex := `[A-Za-z]{3}\s+[(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)]+\s+\d{1,2}\s+\d\d:\d\d:\d\d\s+[\-|\+]\d{4}\s+\d{4}`
+		return time.RubyDate, rubydateFixedRegex, nil
 	case "RFC822":
 		return time.RFC822, timegrinder.RFC822Regex, nil
 	case "RFC822Z":
 		return time.RFC822Z, timegrinder.RFC822ZRegex, nil
 	case "RFC850":
-		return time.RFC850, timegrinder.RFC850Regex, nil
+		rfc850FixedRegex := `[Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday]+\,+\s\d{2}\-[JFMASOND][anebriyunlgpctov]+\-\d{2}\s\d\d:\d\d:\d\d\s[A-Z]{3}`
+		return time.RFC850, rfc850FixedRegex, nil
 	case "RFC1123":
-		return time.RFC1123, timegrinder.RFC1123Regex, nil
+		rfc1123FixedRegex := `[Mon|Tue|Wed|Thu|Fri|Sat|Sun]+\,+\s\d{2} [JFMASOND][anebriyunlgpctov]+ \d{4}\s\d\d:\d\d:\d\d\s[A-Z]{3}`
+		return time.RFC1123, rfc1123FixedRegex, nil
 	case "RFC1123Z":
-		return time.RFC1123Z, timegrinder.RFC1123ZRegex, nil
+		rfc1123zFixedRegex := `[Mon|Tue|Wed|Thu|Fri|Sat|Sun]+\,+\s\d{2} [JFMASOND][anebriyunlgpctov]+ \d{4}\s\d\d:\d\d:\d\d\s[\-|\+]\d{4}`
+		return time.RFC1123Z, rfc1123zFixedRegex, nil
 	case "RFC3339":
 		return time.RFC3339, timegrinder.RFC3339Regex, nil
 	case "RFC3339NANO":

@@ -35,7 +35,7 @@ Allowed date formats: ANSIC,UnixDate,RubyDate,RFC822,RFC822Z,RFC850,RFC1123,RFC1
 		}
 		if len(args) > 1 {
 			// Helpful message
-			fmt.Println("You only use a single file.")
+			fmt.Println("only use a single file.")
 			// Show apps help
 			cmd.Help()
 			// exit with a status of 1
@@ -66,7 +66,6 @@ Allowed date formats: ANSIC,UnixDate,RubyDate,RFC822,RFC822Z,RFC850,RFC1123,RFC1
 
 			// Find all matching strings to the original format
 			allStrings, _ := utils.GetMatchingTimeStrings(originalFormatRegex, textFile)
-
 			//Loop over the list of matching dates
 			for _, timestamp := range allStrings {
 				//Convert date format to the new format requested

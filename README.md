@@ -45,4 +45,4 @@ date_changer ~/Download/textfile.txt -o RFC822 -n RFC850 -output newtextfile.txt
 Allowed date formats: ANSIC,UnixDate,RubyDate,RFC822,RFC822Z,RFC850,RFC1123,RFC1123Z,RFC3339,RFC3339Nano,DateTime
 ```
 
-A example file can be found in the example_files folder. To test with it run the following command from the root of the project: `go run main.go example_files/day_in_time.txt -o RFC3339 -n UnixDate`
+A example file can be found in the example_files folder. To test with it run the following command from the root of the project: `go run main.go example_files/SampleData.txt -o RFC3339 -n UnixDate`

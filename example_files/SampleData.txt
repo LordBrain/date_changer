@@ -1,0 +1,11 @@
+This is a ANSIC time format: Mon Jan 9 15:04:05 2023
+This is a UnixDate time format: Mon Jan 9 15:04:05 MST 2023
+This is a RubyDate time format: Mon Jan 09 15:04:05 -0700 2023
+This is a RFC822 time format: 09 Jan 23 15:04 MST
+This is a RFC822Z time format: 09 Jan 23 15:04 -0700
+This is a RFC850 time format: Monday, 09-Jan-23 15:04:05 MST
+This is a RFC1123 time format: Mon, 09 Jan 2023 15:04:05 MST
+This is a RFC1123Z time format: Mon, 09 Jan 2023 15:04:05 -0700
+This is a RFC3339 time format: 2023-01-09T15:04:05Z07:00
+This is a RFC3339Nano time format: 2023-01-09T15:04:05.999999999Z07:00
+This is a DateTime time format: 2023-01-09 15:04:05
