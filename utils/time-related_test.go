@@ -57,7 +57,7 @@ func TestGetLayoutFromString(t *testing.T) {
 		{
 			layoutName:     "ANSIC",
 			expectedLayout: time.ANSIC,
-			expectedRegex:  timegrinder.AnsiCRegex,
+			expectedRegex:  `[A-Za-z]{3}\s+[(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)]+\s+\d{1,2}\s+\d\d:\d\d:\d\d\s+\d{4}`,
 			expectedError:  nil,
 		},
 		{
